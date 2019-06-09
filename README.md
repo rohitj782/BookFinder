@@ -1,2 +1,2 @@
 # BookFinder
-Google Book API is used.
+A Retrofit and Google-Books API application.
