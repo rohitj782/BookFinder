@@ -13,9 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RawJSON"></activity>
+        <activity android:name=".Activiies.RawJSONActivity"></activity>
         <activity
-            android:name=".OpenScreen"
+            android:name=".Activiies.OpenScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activiies.MainActivity"
             android:windowSoftInputMode="stateHidden"></activity>
     </application>
 

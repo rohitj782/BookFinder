@@ -1,10 +1,12 @@
-package rohitrj.com.bookfinder;
+package rohitrj.com.bookfinder.Activiies;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class RawJSON extends AppCompatActivity {
+import rohitrj.com.bookfinder.R;
+
+public class RawJSONActivity extends AppCompatActivity {
 
     String json;
 

@@ -1,4 +1,4 @@
-package rohitrj.com.bookfinder;
+package rohitrj.com.bookfinder.Activiies;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class OpenScreen extends AppCompatActivity {
+import rohitrj.com.bookfinder.R;
+
+public class OpenScreenActivity extends AppCompatActivity {
 
     private TextView textViewTitle,textViewInfo;
     private ImageView logo;
@@ -38,7 +40,7 @@ public class OpenScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(OpenScreen.this,MainActivity.class);
+                Intent intent=new Intent(OpenScreenActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

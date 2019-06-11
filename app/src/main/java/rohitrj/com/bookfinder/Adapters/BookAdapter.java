@@ -1,4 +1,4 @@
-package rohitrj.com.bookfinder;
+package rohitrj.com.bookfinder.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +8,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import rohitrj.com.bookfinder.Models.BookData;
+import rohitrj.com.bookfinder.Models.Items;
+import rohitrj.com.bookfinder.Models.VolumeInfo;
+import rohitrj.com.bookfinder.R;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
 
     ArrayList arrayList;
 
-    public BookAdapter(ArrayList<BookData> arrayList) {
-        this.arrayList = arrayList;
+    public BookAdapter(List<Items> arrayList) {
+        this.arrayList = (ArrayList) arrayList;
     }
 
     @NonNull
@@ -28,7 +34,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        myViewHolder.seeDetails((BookData) arrayList.get(i));
+        myViewHolder.seeDetails((Items) arrayList.get(i));
     }
 
     @Override
@@ -41,7 +47,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
             super(itemView);
         }
 
-        void seeDetails(BookData bookData) {
+        void seeDetails(Items items) {
+
+            VolumeInfo volumeInfo= items.getVolumeInfo();
+
             TextView title, author, summary,date;
 
             title = itemView.findViewById(R.id.textViewBookName);
@@ -49,10 +58,24 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
             summary = itemView.findViewById(R.id.textViewSummary);
             date=itemView.findViewById(R.id.textViewDate);
 
-            date.setText(bookData.getDate());
-            title.setText(bookData.getName());
-            author.setText(bookData.getAuthor());
-            summary.setText(bookData.getSummary());
+            date.setText(volumeInfo.getPublishedDate());
+            title.setText(volumeInfo.getTitle());
+
+            String allAuthor = "";
+            String authorsArray[]=volumeInfo.getAuthors();
+
+            for(int i=0;i<authorsArray.length;i++) {
+                if(i==authorsArray.length-1){
+                    allAuthor+=authorsArray[i]+"";
+                }else {
+                    allAuthor+=authorsArray[i]+",  ";
+                }
+            }
+
+            if(!allAuthor.contains("null"))
+            author.setText(allAuthor);
+
+            summary.setText(volumeInfo.getDescription());
 
         }
     }

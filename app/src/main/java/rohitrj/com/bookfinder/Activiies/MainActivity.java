@@ -1,4 +1,4 @@
-package rohitrj.com.bookfinder;
+package rohitrj.com.bookfinder.Activiies;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -7,11 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import rohitrj.com.bookfinder.Adapters.BookAdapter;
+import rohitrj.com.bookfinder.Models.BookData;
+import rohitrj.com.bookfinder.Models.Items;
+import rohitrj.com.bookfinder.Models.VolumeInfo;
+import rohitrj.com.bookfinder.R;
+import rohitrj.com.bookfinder.Services.GetServices;
+import rohitrj.com.bookfinder.Services.ServiceBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,7 +83,47 @@ public class MainActivity extends AppCompatActivity {
 
                 if (networkInfo != null && networkInfo.isConnected()) {
                     progressBar.setVisibility(View.VISIBLE);
-                    new FetchBooks(recyclerView,buttonRawJson,progressBar).execute(book);
+
+                    // call the network via retrofit
+
+                    GetServices services= (GetServices) ServiceBuilder.buildService(GetServices.class);
+                    HashMap <String, String> hashMap = new HashMap<>();
+                    hashMap.put("q",book);
+                    hashMap.put("maxResults","40");
+                    hashMap.put("printType","books");
+
+                    final Call<BookData> request =services.getBooks(hashMap);
+
+
+                    request.enqueue(new Callback<BookData>() {
+                        @Override
+                        public void onResponse(Call<BookData> call, Response<BookData> response) {
+                            if(response.isSuccessful()){
+
+                                progressBar.setVisibility(View.INVISIBLE);
+                                Log.i("TAG",response.body().getTotalItems()+"");
+
+                                List<Items> items= response.body().getItems();
+
+                                BookAdapter bookAdapter=new BookAdapter(items);
+                                recyclerView.setAdapter(bookAdapter);
+
+                            }else {
+                                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.INVISIBLE);
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<BookData> call, Throwable t) {
+
+                            Toast.makeText(MainActivity.this, "Error "+t, Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+
+
 
                 }
             }
