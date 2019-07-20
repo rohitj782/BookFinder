@@ -33,7 +33,6 @@ import rohitrj.com.bookfinder.Services.ServiceBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonFind,buttonRawJson;
     private EditText editTextBook;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
@@ -44,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonFind=findViewById(R.id.buttonFind);
+        Button buttonFind = findViewById(R.id.buttonFind);
         editTextBook=findViewById(R.id.editTextBook);
-        buttonRawJson=findViewById(R.id.buttonRawJson);
         recyclerView=findViewById(R.id.recyclerView);
         progressBar=findViewById(R.id.progressBar);
 
@@ -122,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
-
-
 
                 }
             }
