@@ -14,25 +14,21 @@ import rohitrj.com.bookfinder.R;
 
 public class OpenScreenActivity extends AppCompatActivity {
 
-    private TextView textViewTitle,textViewInfo;
-    private ImageView logo;
-    private Button buttonNext;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_screen);
 
-        textViewInfo=findViewById(R.id.textViewInfo);
-        textViewTitle=findViewById(R.id.textViewTitle);
-        logo=findViewById(R.id.imageViewLogo);
-        buttonNext=findViewById(R.id.buttonNext);
+        TextView textViewInfo = findViewById(R.id.textViewInfo);
+        TextView textViewTitle = findViewById(R.id.textViewTitle);
+        ImageView logo = findViewById(R.id.imageViewLogo);
+        Button buttonNext = findViewById(R.id.buttonNext);
 
-        Animation animation_mid= AnimationUtils.loadAnimation(this,R.anim.ani_middle);
+        Animation animation_mid = AnimationUtils.loadAnimation(this, R.anim.ani_top);
         textViewTitle.startAnimation(animation_mid);
         logo.setAnimation(animation_mid);
 
-        Animation animation_end= AnimationUtils.loadAnimation(this,R.anim.ani_end);
+        Animation animation_end = AnimationUtils.loadAnimation(this, R.anim.ani_top);
         textViewInfo.startAnimation(animation_end);
         buttonNext.setAnimation(animation_end);
 
@@ -40,8 +36,9 @@ public class OpenScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(OpenScreenActivity.this, MainActivity.class);
+                Intent intent = new Intent(OpenScreenActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

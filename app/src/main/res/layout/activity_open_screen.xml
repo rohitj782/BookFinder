@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activiies.OpenScreenActivity">
 
     <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
@@ -17,7 +22,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-        app:srcCompat="@drawable/iconlarge" />
+        app:srcCompat="@drawable/iconlarge"
+        android:contentDescription="@string/logo" />
 
     <TextView
         android:id="@+id/textViewInfo"
@@ -26,10 +32,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
-        android:text="Find books across the large collection of google  books API."
+        android:text="@string/find_books_across_the_large_collection_of_google_books_api"
         android:textAlignment="center"
         android:textColor="@android:color/holo_purple"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,11 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:text="BOOK FINDER"
+        android:text="@string/book_finder"
         android:textColor="@android:color/black"
-        android:textSize="32sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,15 +61,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/holo_purple"
         android:paddingStart="25dp"
         android:paddingTop="15dp"
         android:paddingEnd="25dp"
         android:paddingBottom="15dp"
-        android:text="Get Started"
+        android:text="@string/get_started"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="14sp"
@@ -72,3 +78,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewInfo" />
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
